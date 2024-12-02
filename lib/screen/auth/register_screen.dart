@@ -13,8 +13,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _jurusanController = TextEditingController();
   final TextEditingController _niController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmationController =
-      TextEditingController();
+  final TextEditingController _passwordConfirmationController = TextEditingController();
   final TextEditingController _levelIdController = TextEditingController();
 
   bool _isLoading = false;
@@ -25,7 +24,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _isLoading = true;
     });
 
-    // Call the registration service
     try {
       final response = await _registerService.register(
         username: _usernameController.text,
@@ -38,9 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         context: context,
       );
 
-      // Check for success in response
       if (response['success']) {
-        // Show success dialog
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -63,15 +59,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           },
         );
       } else {
-        // Show error message from response
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(response['message'] ??
-                  'Registration failed. Please try again.')),
+          SnackBar(content: Text(response['message'] ?? 'Registration failed. Please try again.')),
         );
       }
     } catch (e) {
-      // Handle any errors during registration
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('An error occurred. Please try again.')),
       );
@@ -84,7 +76,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
-    // Dispose controllers to free up resources
     _usernameController.dispose();
     _namaController.dispose();
     _jurusanController.dispose();
@@ -98,97 +89,91 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 125, 167, 223),
-              Color.fromARGB(255, 235, 218, 191),
+      resizeToAvoidBottomInset: true, // Memastikan layar menyesuaikan dengan keyboard
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(255, 125, 167, 223),
+                Color.fromARGB(255, 235, 218, 191),
+              ],
+            ),
+          ),
+          child: Stack(
+            children: <Widget>[
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        // LOGO - Removed Hero for preventing conflicts
+                        Image.asset(
+                          'assets/image/logonew.png',
+                          width: 140,
+                          height: 140,
+                        ),
+                        const SizedBox(height: 40),
+                        const Text(
+                          'Daftar Akun',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat',
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 30),
+                        _buildTextField(_usernameController, 'Username'),
+                        const SizedBox(height: 20),
+                        _buildTextField(_namaController, 'Nama'),
+                        const SizedBox(height: 20),
+                        _buildTextField(_jurusanController, 'Jurusan'),
+                        const SizedBox(height: 20),
+                        _buildTextField(_niController, 'Nomor Induk'),
+                        const SizedBox(height: 20),
+                        _buildTextField(_passwordController, 'Password', obscureText: true),
+                        const SizedBox(height: 20),
+                        _buildTextField(_passwordConfirmationController, 'Confirm Password', obscureText: true),
+                        const SizedBox(height: 20),
+                        _buildTextField(_levelIdController, 'Level ID'),
+                        const SizedBox(height: 30),
+                        _isLoading
+                            ? const Center(child: CircularProgressIndicator())
+                            : _buildRegisterButton(context),
+                        const SizedBox(height: 20),
+                        _buildLoginPrompt(context),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context); // Kembali ke halaman sebelumnya
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
             ],
           ),
-        ),
-        child: Stack(
-          children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    // LOGO - using Image.asset directly
-                    Image.asset(
-                      'assets/image/logonew.png', // Load image from assets
-                      width: 140, // Adjust width
-                      height: 140, // Adjust height
-                    ),
-                    const SizedBox(height: 40),
-                    const Text(
-                      'Daftar Akun',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat',
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 30),
-                    // Input fields
-                    _buildTextField(_usernameController, 'Username'),
-                    const SizedBox(height: 20),
-                    _buildTextField(_namaController, 'Nama'),
-                    const SizedBox(height: 20),
-                    _buildTextField(_jurusanController, 'Jurusan'),
-                    const SizedBox(height: 20),
-                    _buildTextField(_niController, 'Nomor Induk'),
-                    const SizedBox(height: 20),
-                    _buildTextField(_passwordController, 'Password',
-                        obscureText: true),
-                    const SizedBox(height: 20),
-                    _buildTextField(
-                        _passwordConfirmationController, 'Confirm Password',
-                        obscureText: true),
-                    const SizedBox(height: 20),
-                    _buildTextField(_levelIdController, 'Level ID'),
-
-                    const SizedBox(height: 30),
-                    // Loading indicator or button
-                    if (_isLoading)
-                      Center(child: CircularProgressIndicator())
-                    else
-                      _buildRegisterButton(context),
-
-                    const SizedBox(height: 20),
-                    // Login Prompt
-                    _buildLoginPrompt(context),
-                  ],
-                ),
-              ),
-            ),
-            // Back Button
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Kembali ke halaman sebelumnya
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  color: Colors.black54,
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label,
-      {bool obscureText = false}) {
+  Widget _buildTextField(TextEditingController controller, String label, {bool obscureText = false}) {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -222,16 +207,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: ElevatedButton(
-        onPressed: () {
-          if (!_isLoading) {
-            // Prevent multiple taps during loading
-            _register();
-          }
-        },
+        onPressed: !_isLoading ? _register : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 17),
         ),
         child: const Text(
           'Daftar',
@@ -249,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget _buildLoginPrompt(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => LoginScreen()),
         );

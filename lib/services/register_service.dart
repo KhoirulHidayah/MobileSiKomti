@@ -16,7 +16,7 @@ class RegisterService {
   }) async {
     try {
       final response = await _dio.post(
-        'http://192.168.1.14:8000/api/register',
+        'http://127.0.0.1:8000/api/register',
         data: {
           'username': username,
           'nama': nama,

@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class KompenApiService {
   Dio dio = Dio();
-  final String baseUrl = "http://192.168.1.14:8000/api/";
+  final String baseUrl = "http://127.0.0.1:8000/api/";
 
   Future<List<dynamic>> getKompenList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

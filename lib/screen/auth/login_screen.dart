@@ -48,54 +48,47 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-        child: Stack(
-          children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    // LOGO - using Image.asset directly
-                    Image.asset(
-                      'assets/image/logonew.png', // Load image from assets
-                      width: 140, // Adjust width
-                      height: 140, // Adjust height
-                    ),
-                    const SizedBox(height: 40),
-                    const Text(
-                      'Silahkan Login\nke akun Anda',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat',
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-
-                    const SizedBox(height: 50),
-                    // Username Field
-                    _buildTextField('Masukkan nama Anda', _usernameController),
-                    const SizedBox(height: 20),
-                    // Password Field
-                    _buildTextField(
-                        'Masukkan password Anda', _passwordController,
-                        obscureText: true),
-                    const SizedBox(height: 30),
-                    // Login Button
-                    _isLoading
-                        ? Center(child: CircularProgressIndicator())
-                        : _buildLoginButton(),
-                    const SizedBox(height: 20),
-                    // Registration Prompt
-                    _buildRegisterPrompt(context),
-                  ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                // LOGO - using Image.asset directly
+                Image.asset(
+                  'assets/image/logonew.png', // Load image from assets
+                  width: 140, // Adjust width
+                  height: 140, // Adjust height
                 ),
-              ),
+                const SizedBox(height: 40),
+                const Text(
+                  'Silahkan Login\nke akun Anda',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat',
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 50),
+                // Username Field
+                _buildTextField('Masukkan nama Anda', _usernameController),
+                const SizedBox(height: 20),
+                // Password Field
+                _buildTextField('Masukkan password Anda', _passwordController,
+                    obscureText: true),
+                const SizedBox(height: 30),
+                // Login Button
+                _isLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : _buildLoginButton(),
+                const SizedBox(height: 20),
+                // Registration Prompt
+                _buildRegisterPrompt(context),
+              ],
             ),
-            _buildBackButton(context),
-          ],
+          ),
         ),
       ),
     );
@@ -159,23 +152,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Fungsi untuk tombol kembali
-  Widget _buildBackButton(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: IconButton(
-          onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya
-          },
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.black54,
-        ),
-      ),
-    );
-  }
-
   // Fungsi untuk menambahkan prompt pendaftaran
   Widget _buildRegisterPrompt(BuildContext context) {
     return GestureDetector(
@@ -183,15 +159,18 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  RegisterScreen()), // Ganti dengan halaman pendaftaran mahasiswa
+            builder: (context) => RegisterScreen(),
+          ),
         );
       },
-      child: const Text('Belum punya akun? Daftar',
-          style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
-              color: Colors.white)),
+      child: const Text(
+        'Belum punya akun? Daftar',
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

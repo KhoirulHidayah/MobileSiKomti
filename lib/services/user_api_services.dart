@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class UserApiService {
   final Dio _dio = Dio();
-  final String baseUrl = "http://192.168.1.14:8000/api/";
+  final String baseUrl = "http://127.0.0.1:8000/api/";
 
   Future<Map<String, dynamic>> getUserProfile() async {
     final prefs = await SharedPreferences.getInstance();

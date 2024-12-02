@@ -7,7 +7,7 @@ import '../screen/dosen/dosen_screen.dart'; // Import DosenScreen
 class AuthService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'http://192.168.1.14:8000/api/', // Ganti dengan URL API Anda
+      baseUrl: 'http://127.0.0.1:8000/api/', // Ganti dengan URL API Anda
     ),
   );
 

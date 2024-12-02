@@ -4,7 +4,7 @@ import '../models/mahasiswa_alpha.dart';
 class DataService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'http://192.168.1.14:8000/api/',
+      baseUrl: 'http://127.0.0.1:8000/api/',
     ),
   );
 

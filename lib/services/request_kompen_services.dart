@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class RequestKompenService {
   final Dio dio = Dio();
-  final String baseUrl = "http://192.168.1.14:8000/api/";
+  final String baseUrl = "http://127.0.0.1:8000/api/";
 
   // Fungsi untuk melakukan permintaan request kompen
   Future<bool> requestKompen(String uuidKompen, String ni, String nama) async {

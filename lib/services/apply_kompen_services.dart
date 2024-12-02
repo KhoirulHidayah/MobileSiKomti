@@ -6,7 +6,7 @@ class ApplyKompenServices {
 
   // Define the base URL for your API
   final String baseUrl =
-      'http://192.168.1.14:8000/api'; // Replace with your actual API URL
+      'http://127.0.0.1:8000/api'; // Replace with your actual API URL
 
   // Method to update the status of a Kompen request (Accept/Reject)
   Future<Map<String, dynamic>> updateStatus({
