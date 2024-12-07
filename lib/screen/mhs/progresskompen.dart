@@ -42,7 +42,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFFED7C3), Color(0xFFFEEFE5)],
+            colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 255, 255, 255)],
           ),
         ),
         child: SingleChildScrollView(
@@ -58,7 +58,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         color: showRequests
-                            ? const Color.fromARGB(255, 113, 120, 158)
+                            ? Color(0xFF00509E)
                             : Colors.white,
                         elevation: 4,
                         margin: const EdgeInsets.all(8),
@@ -85,7 +85,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         color: !showRequests
-                            ? const Color.fromARGB(255, 113, 120, 158)
+                            ? Color(0xFF00509E)
                             : Colors.white,
                         elevation: 4,
                         margin: const EdgeInsets.all(8),
@@ -113,9 +113,9 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   elevation: 4,
+                  color: const Color(0xFF002366), // Warna card biru
                   child: const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     child: Row(
                       children: [
                         Text(
@@ -124,6 +124,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat',
+                            color: Colors.white, // Warna teks putih
                           ),
                         ),
                       ],
@@ -161,8 +162,8 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                                   decoration: const BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
-                                        Color.fromARGB(255, 113, 120, 158),
-                                        Color.fromARGB(255, 65, 84, 129),
+                                        Color(0xFF00509E),
+                                        Color(0xFF002366),
                                       ],
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
@@ -261,7 +262,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                                         request['status_Acc'] == 1
                                             ? Icons.check_circle_outline
                                             : Icons.cancel,
-                                        color: Color.fromARGB(255, 65, 84, 129),
+                                        color: Color(0xFF00509E),
                                       ),
                                       const SizedBox(width: 2),
                                       Text(
@@ -269,7 +270,7 @@ class _ProgressKompenScreenState extends State<ProgressKompenScreen> {
                                         style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           color:
-                                              Color.fromARGB(255, 65, 84, 129),
+                                              Color(0xFF00509E),
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),

@@ -92,16 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       resizeToAvoidBottomInset: true, // Memastikan layar menyesuaikan dengan keyboard
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 125, 167, 223),
-                Color.fromARGB(255, 235, 218, 191),
-              ],
-            ),
-          ),
+          color: Colors.white, // Mengganti background menjadi putih
           child: Stack(
             children: <Widget>[
               Center(
@@ -111,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        // LOGO - Removed Hero for preventing conflicts
+                        // LOGO
                         Image.asset(
                           'assets/image/logonew.png',
                           width: 140,
@@ -124,7 +115,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat',
-                            color: Colors.white,
+                            color: Colors.black, // Warna teks menjadi hitam
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -150,19 +141,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         _buildLoginPrompt(context),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context); // Kembali ke halaman sebelumnya
-                    },
-                    icon: const Icon(Icons.arrow_back),
-                    color: Colors.black54,
                   ),
                 ),
               ),
@@ -196,14 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       width: 250,
       height: 60,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 113, 120, 158),
-            Color.fromARGB(255, 65, 84, 129),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: Color(0xFF002366), // Mengubah warna tombol
         borderRadius: BorderRadius.circular(20),
       ),
       child: ElevatedButton(
@@ -238,7 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         style: TextStyle(
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black, // Warna teks menjadi hitam
         ),
       ),
     );

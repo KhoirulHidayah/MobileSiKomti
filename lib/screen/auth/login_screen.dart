@@ -38,16 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 125, 167, 223),
-              Color.fromARGB(255, 235, 218, 191),
-            ],
-          ),
-        ),
+        color: Colors.white, // Ubah latar belakang menjadi putih
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -67,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Montserrat',
-                    color: Colors.white,
+                    color: Colors.black, // Ubah teks menjadi hitam
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -122,21 +113,12 @@ class _LoginScreenState extends State<LoginScreen> {
       width: 250,
       height: 60,
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromARGB(255, 113, 120, 158),
-            Color.fromARGB(255, 65, 84, 129),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
         borderRadius: BorderRadius.circular(20),
       ),
       child: ElevatedButton(
         onPressed: _login,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
+          backgroundColor: Color(0xFF002366), // Warna tombol biru
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 17),
         ),
         child: const Text(
@@ -145,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontSize: 20,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.white, // Teks tetap putih
           ),
         ),
       ),
@@ -168,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
         style: TextStyle(
           fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: Colors.black, // Ubah teks menjadi hitam
         ),
       ),
     );
